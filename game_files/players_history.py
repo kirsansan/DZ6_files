@@ -8,12 +8,16 @@ class Players:
         self.name_and_score = []
 
     def __repr__(self) -> str:
+        """ we shall return all what we know """
         out: str = ""
         for element in self.name_and_score:
             out += str(element['global_try']) + ' ' + element['name'] + ' ' + str(element['score']) + ';'
         return out
 
     def read_history_from_file(self, filename):
+        """ read lines from file and fill structure of self.name_and_score
+        file format is <name><space><score> in each line without anything else
+        """
         iterator: int = 0
         # my_str: str = ""
         file_object = open(filename, 'r', encoding='utf-8')
@@ -27,14 +31,15 @@ class Players:
             # so we will mark records with human-style (from 1), if we found 0 somewhere, it would mean error
             iterator += 1
             # print(iterator, my_str, end='')
-            self.name_and_score.append({"global_try": iterator, "name":my_str.split(' ')[0], "score": int(my_str.split(' ')[1])})
-
+            self.name_and_score.append({"global_try": iterator,
+                                        "name": my_str.split(' ')[0],
+                                        "score": int(my_str.split(' ')[1])})
         #  second short method for work with files
         # with open(filename, 'r') as f:
         #    self.name_and_score[] = f.read().splitlines()
         file_object.close()
 
-    def get_statistic(self) -> list[str:]:
+    def get_statistic(self) -> dict[str:, str:]:
         """ return name and best result as a mini-dictionary"""
         best_result: int = 0
         # name_for_best_result: str = ""
@@ -44,9 +49,10 @@ class Players:
                 i_am_name_for_out = (element['name'])
                 # i_am_list_for_out.append(str(element['score']))
                 best_result = element['score']
-        return [i_am_name_for_out, str(best_result)]
+        return {'name': i_am_name_for_out, 'score': str(best_result)}
 
-    def put_new_player_2_file(self, filename: str = "tmp.txt", name: str ="", score: int = 0) -> bool:
+    def put_new_player_2_file(self, filename: str = "tmp.txt", name: str = "", score: int = 0) -> bool:
+        """ this func may be static but i am going add filename as variable of self class in future"""
         file_object = open(filename, 'a', encoding='utf-8')
         # print(file_object)
         if file_object.writable():
@@ -68,9 +74,10 @@ if __name__ == '__main__':
     print(test_player)
 
     tmp_list = test_player.get_statistic()
-    print(tmp_list)   # wait for "Bolik 30"
+    # print(tmp_list)
+    print(tmp_list['name'], tmp_list['score'])   # wait for "Bolik 30"
 
     test_player.read_history_from_file('./history.txt')
-    print(test_player)
+    print(test_player)  # wait for some string from __repr__()
 
-    test_player.put_new_player_2_file('./temp.txt', 'Krolik', 15)
+    test_player.put_new_player_2_file('./temp.txt', 'Krolik', 15)  # put one more white rabbit to the test file

@@ -1,11 +1,13 @@
 """the simple class for inputting and check strings"""
+
+
 class InputAndCheckString:
 
     input_string: str = ""
     is_correct: bool = False
     is_empty: bool = True
 
-    def __init__(self, input_string: str =""):
+    def __init__(self, input_string: str = ""):
         self.input_string = input_string
         self.is_correct = False
         self.is_empty = self.verify_empty()
@@ -35,7 +37,7 @@ class InputAndCheckString:
 
     def input_while_correct(self, in_comment: str):
         """I am going request you while you enter non-empty string
-           also all strings will rebuild to lowercase
+           in old version also all strings was rebuild to lowercase
         """
         self.input_string = ""
         self.is_correct = False
@@ -43,7 +45,7 @@ class InputAndCheckString:
             # print(in_comment)
             self.input_string = input(in_comment)
             self.verify_empty()  # it can change is_correct flag
-            self.input_string = self.input_string.lower()
+            # self.input_string = self.input_string.lower()
 
     def input_empty(self, in_comment: str):
         """I am going request you while you enter EMPTY string
@@ -55,6 +57,7 @@ class InputAndCheckString:
             print(in_comment)
             self.input_string = input()
             self.verify_empty()  # it can change is_empty flag
+
 
 # Block for self-testing
 if __name__ == '__main__':

@@ -9,3 +9,6 @@
 Василий 120
 Bella 10
 Bella 300
+kirill 600
+qwe 0
+white 10
