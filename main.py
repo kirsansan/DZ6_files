@@ -56,7 +56,7 @@ if __name__ == '__main__':
 
     # print statistics
     my_players.read_history_from_file(FILE_FOR_HISTORY)  # re-read file after last saving
-    what_i_wand_to_say: dict = my_players.get_statistic()
+    what_i_want_to_say: dict = my_players.get_statistic()
 
     print(f'Всего игр сыграно: {my_players.get_length()}')
-    print(f'Максимальный рекорд у пользователя {what_i_wand_to_say["name"]}: {what_i_wand_to_say["score"]}')
+    print(f'Максимальный рекорд у пользователя {what_i_want_to_say["name"]}: {what_i_want_to_say["score"]}')
