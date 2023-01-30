@@ -1,7 +1,7 @@
 class BasicWords:
     words: list[:str] = []
 
-    def __init__(self, lst: list[:str] = []):
+    def __init__(self, lst: list[str] = []):
         self.words = lst
 
     def __repr__(self) -> str:
@@ -19,14 +19,24 @@ class BasicWords:
         f.close()
 
 
+def test():
+    # at this test  words just read and print/check
+    some_words = BasicWords()
+    try:
+        #some_words.words = ['abc', 'def']
+        # print(some_words)
+
+        # read from file and check
+        some_words.read_words_from_file('./words.txt')
+        # print(some_words)
+        for x in some_words.words:
+            assert x in ["python", "squirrel", "flask", "cucumbers"]
+    except AssertionError:
+        print("You have errors, check your functions")
+    else:
+        print("Ok. All test passed")
+
+
 # this block for a self-test
 if __name__ == '__main__':
-
-    # at this test  words just fill and print
-    some_words = BasicWords()
-    some_words.words = ['abc', 'def']
-    print(some_words)
-
-    # read from file and print
-    some_words.read_words_from_file('./words.txt')
-    print(some_words)
+    test()

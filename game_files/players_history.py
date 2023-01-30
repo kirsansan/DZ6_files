@@ -18,7 +18,7 @@ class Players:
         """ read lines from file and fill structure of self.name_and_score
         file format is <name><space><score> in each line without anything else
         """
-        iterator: int = 0
+        iterator = 0
         # my_str: str = ""
         file_object = open(filename, 'r', encoding='utf-8')
         self.name_and_score = []
