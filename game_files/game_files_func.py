@@ -1,5 +1,5 @@
 class BasicWords:
-    words: list[:str] = []
+    words: list[str] = []
 
     def __init__(self, lst: list[str] = []):
         self.words = lst
@@ -19,11 +19,20 @@ class BasicWords:
         f.close()
 
 
+def print_headers_around_some_text(func):
+    def wrapper():
+        print("=== we will test you ===")
+        func()
+        print("=== we have just done all test ===")
+    return wrapper
+
+
+@print_headers_around_some_text
 def test():
     # at this test  words just read and print/check
     some_words = BasicWords()
     try:
-        #some_words.words = ['abc', 'def']
+        # some_words.words = ['abc', 'def']
         # print(some_words)
 
         # read from file and check
