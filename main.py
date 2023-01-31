@@ -10,7 +10,9 @@ import random
 
 
 def mix_string(input_str: str) -> str:
-    """ mix letters in the string and return new string"""
+    """ mix letters in the string and return new string
+    I know about random.shuffle(list), however I want to do this work by hands =)
+    """
     new_mixed_sting: str = ""
     old_nonmixed_str_as_list: list = list(input_str.lower())
     size = len(input_str)
@@ -37,15 +39,15 @@ if __name__ == '__main__':
     # name entering
     # current_player = input("Введите ваше имя")  # easy input from old version
     input_and_check_name: InputAndCheckString = InputAndCheckString()
-    user_choose: InputAndCheckString = InputAndCheckString()
+    input_and_check_user_choose: InputAndCheckString = InputAndCheckString()
     input_and_check_name.input_while_correct("Введите ваше имя")
 
     # game section
     for effort in range(0, len(my_words.words)):
         word4game: str = mix_string(my_words.words[effort])
         print(word4game)
-        user_choose.input_while_correct('try to find me >')
-        if user_choose.input_string == my_words.words[effort]:
+        input_and_check_user_choose.input_while_correct('try to find me >')
+        if input_and_check_user_choose.input_string == my_words.words[effort]:
             print(f"Верно! Вы получаете {SCORE_FOR_RIGHT} очков.")
             score_counter += SCORE_FOR_RIGHT
         else:
